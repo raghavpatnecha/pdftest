@@ -13,16 +13,15 @@
 		<script>
 			 $(document).ready(function () {
 				 
-   var pdfDoc = null,
-    pageNum = 1,
-    pageRendering = false,
+  
+   var  pageRendering = false,
     pageNumPending = null;
  
 var loadingTask = pdfjsLib.getDocument('GreenBelt.pdf');
 loadingTask.promise.then(
 	function (pdf) {
 		// Load information from the first page.
-		pdfDoc.getPage(1).then(function (page) {
+		pdf.getPage(1).then(function (page) {
 			pageRendering = true;
 			var scale = 1;
 			var viewport = page.getViewport(scale);
