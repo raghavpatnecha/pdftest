@@ -16,7 +16,7 @@
   
    var  pageRendering = false,
     pageNumPending = null;
- 
+pdfjsLib.disableWorker = true;
 var loadingTask = pdfjsLib.getDocument('GreenBelt.pdf');
 loadingTask.promise.then(
 	function (pdf) {
