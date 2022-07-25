@@ -26,9 +26,13 @@ loadingTask.promise.then(
 				canvasContext: context,
 				viewport: viewport,
 			};
-			page.render(renderContext).then(function () {
-				console.log('Page rendered!');
-			});
+			//page.render(renderContext).then(function () {
+			//	console.log('Page rendered!');
+			//});
+			var renderTask = page.render(renderContext);
+                    	renderTask.promise.then(function () {
+                        console.log('Page rendered');
+                    });
 		});
 	},
 	function (reason) {
