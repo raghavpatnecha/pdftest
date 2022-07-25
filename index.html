@@ -4,9 +4,14 @@
 	<head>
 		<meta charset="UTF-8" />
 		<title>PDF.js Example</title>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 		<script src="pdf.js"></script>
-		<script>
 		
+	</head>
+	<body>
+		<canvas id="pdf"></canvas>
+		<script>
+			 $(document).ready(function () {
 var loadingTask = pdfjsLib.getDocument('GreenBelt.pdf');
 loadingTask.promise.then(
 	function (pdf) {
@@ -39,9 +44,7 @@ loadingTask.promise.then(
 		console.error(reason);
 	},
 );
+				  });
 		</script>
-	</head>
-	<body>
-		<canvas id="pdf"></canvas>
 	</body>
 </html>
