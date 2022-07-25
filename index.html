@@ -12,8 +12,16 @@
 		<canvas id="pdf"></canvas>
 		<script>
 
+
+
+			 window.onload = function () {
+ var url = 'GreenBelt.pdf'; 
+ renderPDF(url);
+ }
+
+function renderPDF(url) {
 pdfjsLib.disableWorker = true;
-var loadingTask = pdfjsLib.getDocument('GreenBelt.pdf');
+var loadingTask = pdfjsLib.getDocument(url);
 loadingTask.promise.then(
 	function (pdf) {
 		// Load information from the first page.
@@ -38,7 +46,7 @@ loadingTask.promise.then(
 		console.error(reason);
 	}
 );
-
+ }
 		</script>
 	</body>
 </html>
