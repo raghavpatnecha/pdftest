@@ -12,11 +12,18 @@
 		<canvas id="pdf"></canvas>
 		<script>
 			 $(document).ready(function () {
+				 
+   var pdfDoc = null,
+    pageNum = 1,
+    pageRendering = false,
+    pageNumPending = null,
+ 
 var loadingTask = pdfjsLib.getDocument('https://raw.githubusercontent.com/mozilla/pdf.js/ba2edeae/web/compressed.tracemonkey-pldi-09.pdf');
 loadingTask.promise.then(
 	function (pdf) {
 		// Load information from the first page.
-		pdf.getPage(1).then(function (page) {
+		pdfDoc.getPage(1).then(function (page) {
+			pageRendering = true;
 			var scale = 1;
 			var viewport = page.getViewport(scale);
 
@@ -36,8 +43,15 @@ loadingTask.promise.then(
 			//});
 			var renderTask = page.render(renderContext);
                     	renderTask.promise.then(function () {
+			pageRendering = false;
+      			if (pageNumPending !== null) {
+        				// New page rendering is pending
+        			renderPage(pageNumPending);
+        		pageNumPending = null;
+      }
                         console.log('Page rendered');
                     });
+			
 		});
 	},
 	function (reason) {
@@ -45,6 +59,11 @@ loadingTask.promise.then(
 	},
 );
 				  });
+
+
+
+    
+
 		</script>
 	</body>
 </html>
