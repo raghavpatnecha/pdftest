@@ -18,7 +18,7 @@
     pageRendering = false,
     pageNumPending = null,
  
-var loadingTask = pdfjsLib.getDocument('https://raw.githubusercontent.com/mozilla/pdf.js/ba2edeae/web/compressed.tracemonkey-pldi-09.pdf');
+var loadingTask = pdfjsLib.getDocument('GreenBelt.pdf');
 loadingTask.promise.then(
 	function (pdf) {
 		// Load information from the first page.
